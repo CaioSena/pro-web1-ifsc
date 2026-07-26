@@ -1,0 +1,167 @@
+/* ===== Base reset and body ===== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 20px;
+  font-family: Georgia, "Times New Roman", serif;
+  line-height: 1.6;
+  background-color: #2c3e50;
+  color: #ecf0f1;
+}
+
+/* ===== Reusable background utility classes ===== */
+.bg-light {
+  background-color: #fef9e7;
+}
+
+.bg-dark {
+  background-color: #1a252f;
+}
+
+.bg-medium {
+  background-color: #d5dbdb;
+}
+
+/* ===== Reusable text color utility classes ===== */
+.text-dark {
+  color: #2c3e50;
+}
+
+.text-light {
+  color: #ecf0f1;
+}
+
+/* ===== Header and footer ===== */
+header {
+  text-align: center;
+  margin-bottom: 30px;
+  padding: 15px;
+  border-bottom: 3px solid #3498db;
+}
+
+header h1 {
+  margin: 0 0 10px;
+  font-size: 2.2rem;
+}
+
+footer {
+  margin-top: 30px;
+  padding: 15px;
+  text-align: center;
+  font-size: 0.9rem;
+  border-top: 2px solid #3498db;
+}
+
+/* ===== Main section ===== */
+#main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+/* Child selector: styles only the 3 direct div children */
+#main > div {
+  margin-bottom: 25px;
+  padding: 20px;
+  border: 5px dashed #3498db;
+  border-radius: 8px;
+}
+
+/* Adjacent sibling selector: extra styling after the first card */
+#favorite-movies + #courses {
+  border-color: #e74c3c;
+}
+
+/* General sibling selector: all cards after the first one */
+#favorite-movies ~ div {
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+/* ===== Reusable card component ===== */
+.card {
+  position: relative;
+}
+
+/* Different background-clip per card */
+#favorite-movies {
+  background-clip: border-box;
+  background-image: linear-gradient(135deg, rgba(52, 152, 219, 0.15), transparent);
+}
+
+#courses {
+  background-clip: padding-box;
+  background-image: linear-gradient(135deg, rgba(231, 76, 60, 0.2), transparent);
+}
+
+#personal-info {
+  background-clip: content-box;
+  background-image: linear-gradient(135deg, rgba(46, 204, 113, 0.2), transparent);
+}
+
+/* Descendant selector: paragraphs inside main section divs */
+#main div p {
+  margin: 10px 0;
+  padding: 5px 10px;
+}
+
+/* Child selector: h2 titles directly inside each card */
+.card > h2 {
+  margin-top: 0;
+  padding-bottom: 8px;
+  border-bottom: 2px solid currentColor;
+}
+
+/* Descendant selector: h3 subtitles inside cards */
+.card h3 {
+  margin-top: 20px;
+  font-size: 1.1rem;
+  font-style: italic;
+}
+
+/* Adjacent sibling selector: paragraph immediately after h3 */
+.card h3 + p {
+  padding-left: 15px;
+  border-left: 4px solid #3498db;
+}
+
+/* ===== Custom list component class ===== */
+.custom-list {
+  margin: 15px 0;
+  padding: 15px 15px 15px 35px;
+  border: 2px solid #3498db;
+  border-radius: 6px;
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.custom-list li {
+  margin-bottom: 8px;
+  padding: 4px 8px;
+}
+
+/* Sibling selector: consecutive list items */
+.custom-list li + li {
+  border-top: 1px dotted rgba(52, 152, 219, 0.4);
+}
+
+/* Descendant selector: contact links */
+#personal-info a {
+  color: #2980b9;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+#personal-info a:hover {
+  text-decoration: underline;
+}
+
+/* Descendant selector: strong elements inside custom lists */
+.custom-list strong,
+#main div strong {
+  font-weight: bold;
+  color: #e67e22;
+}

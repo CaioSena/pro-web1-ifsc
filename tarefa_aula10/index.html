@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Página pessoal com filmes favoritos, galeria de lazer e sites recomendados.">
+  <title>Caio Sena</title>
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, sans-serif;
+      line-height: 1.6;
+      max-width: 1200px;
+      margin-inline: auto;
+      padding: 1rem;
+    }
+
+    header,
+    footer {
+      text-align: center;
+      padding: 1rem 0;
+    }
+
+    header {
+      border-bottom: 1px solid #ccc;
+      margin-bottom: 1.5rem;
+    }
+
+    footer {
+      border-top: 1px solid #ccc;
+      margin-top: 1.5rem;
+      font-size: 0.9rem;
+    }
+
+    main {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      align-items: start;
+    }
+
+    section {
+      padding: 1rem;
+      border: 1px solid #ddd;
+    }
+
+    section h2 {
+      margin-top: 0;
+      font-size: 1.1rem;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 0.5rem;
+    }
+
+    /* Coluna 1 — filmes */
+    section:first-of-type ol {
+      padding-left: 1.25rem;
+      margin: 0;
+    }
+
+    section:first-of-type li {
+      padding: 0.35rem 0;
+    }
+
+    section:first-of-type li::marker {
+      font-weight: bold;
+    }
+
+    section:first-of-type li:nth-child(even) {
+      padding-left: 0.25rem;
+    }
+
+    section:first-of-type li:hover {
+      padding-left: 0.5rem;
+    }
+
+    /* Coluna 2 — galeria */
+    .galeria {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+    }
+
+    .galeria figure {
+      margin: 0;
+    }
+
+    .galeria img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border: 1px solid #ccc;
+    }
+
+    .galeria figcaption {
+      text-align: center;
+      font-size: 0.85rem;
+      margin-top: 0.25rem;
+    }
+
+    .galeria figure:nth-child(3n+1) figcaption::before {
+      content: "— ";
+    }
+
+    .galeria figure:nth-child(3n+1) figcaption::after {
+      content: " —";
+    }
+
+    /* Coluna 3 — sites */
+    section:last-of-type ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    section:last-of-type li {
+      padding: 0.5rem 0;
+      border-bottom: 1px solid #eee;
+    }
+
+    section:last-of-type li:last-child {
+      border-bottom: none;
+    }
+
+    section:last-of-type a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    section:last-of-type a::before {
+      content: "› ";
+    }
+
+    section:last-of-type a:hover {
+      text-decoration: underline;
+    }
+
+    section:last-of-type a:focus {
+      outline: 1px solid #999;
+      outline-offset: 2px;
+    }
+
+    @media (max-width: 768px) {
+      main {
+        grid-template-columns: 1fr;
+      }
+
+      .galeria {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .galeria {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Caio Sena</h1>
+    <p>Página pessoal — filmes, lazer e recomendações na web</p>
+  </header>
+
+  <main>
+    <section aria-labelledby="titulo-filmes">
+      <h2 id="titulo-filmes">10 Melhores Filmes</h2>
+      <ol>
+        <li>O Poderoso Chefão (1972)</li>
+        <li>O Senhor dos Anéis: A Sociedade do Anel (2001)</li>
+        <li>Pulp Fiction (1994)</li>
+        <li>A Lista de Schindler (1993)</li>
+        <li>Matrix (1999)</li>
+        <li>Interestelar (2014)</li>
+        <li>Cidade de Deus (2002)</li>
+        <li>Clube da Luta (1999)</li>
+        <li>Parasita (2019)</li>
+        <li>Gladiador (2000)</li>
+      </ol>
+    </section>
+
+    <section aria-labelledby="titulo-galeria">
+      <h2 id="titulo-galeria">Galeria de Lazer</h2>
+      <div class="galeria">
+        <figure>
+          <img src="https://picsum.photos/seed/cycling/400/400" alt="Ciclismo ao ar livre" width="400" height="400" loading="lazy">
+          <figcaption>Ciclismo</figcaption>
+        </figure>
+        <figure>
+          <img src="https://picsum.photos/seed/hiking/400/400" alt="Trilha na natureza" width="400" height="400" loading="lazy">
+          <figcaption>Trilhas</figcaption>
+        </figure>
+        <figure>
+          <img src="https://picsum.photos/seed/reading/400/400" alt="Leitura em ambiente tranquilo" width="400" height="400" loading="lazy">
+          <figcaption>Leitura</figcaption>
+        </figure>
+        <figure>
+          <img src="https://picsum.photos/seed/cooking/400/400" alt="Cozinhando em casa" width="400" height="400" loading="lazy">
+          <figcaption>Culinária</figcaption>
+        </figure>
+        <figure>
+          <img src="https://picsum.photos/seed/photography/400/400" alt="Fotografia de paisagens" width="400" height="400" loading="lazy">
+          <figcaption>Fotografia</figcaption>
+        </figure>
+        <figure>
+          <img src="https://picsum.photos/seed/swimming/400/400" alt="Natação na piscina" width="400" height="400" loading="lazy">
+          <figcaption>Natação</figcaption>
+        </figure>
+        <figure>
+          <img src="https://picsum.photos/seed/guitar/400/400" alt="Tocando violão" width="400" height="400" loading="lazy">
+          <figcaption>Música</figcaption>
+        </figure>
+        <figure>
+          <img src="https://picsum.photos/seed/chess/400/400" alt="Jogo de xadrez" width="400" height="400" loading="lazy">
+          <figcaption>Xadrez</figcaption>
+        </figure>
+        <figure>
+          <img src="https://picsum.photos/seed/garden/400/400" alt="Jardinagem e plantas" width="400" height="400" loading="lazy">
+          <figcaption>Jardinagem</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section aria-labelledby="titulo-sites">
+      <h2 id="titulo-sites">Sites Recomendados</h2>
+      <ul>
+        <li>
+          <a href="https://developer.mozilla.org/pt-BR/" target="_blank" rel="noopener noreferrer">MDN Web Docs — Documentação web</a>
+        </li>
+        <li>
+          <a href="https://www.w3schools.com/" target="_blank" rel="noopener noreferrer">W3Schools — Tutoriais de programação</a>
+        </li>
+        <li>
+          <a href="https://github.com/" target="_blank" rel="noopener noreferrer">GitHub — Repositórios de código</a>
+        </li>
+        <li>
+          <a href="https://stackoverflow.com/" target="_blank" rel="noopener noreferrer">Stack Overflow — Comunidade de desenvolvedores</a>
+        </li>
+        <li>
+          <a href="https://www.khanacademy.org/" target="_blank" rel="noopener noreferrer">Khan Academy — Educação gratuita</a>
+        </li>
+        <li>
+          <a href="https://validator.w3.org/" target="_blank" rel="noopener noreferrer">W3C Validator — Validação HTML</a>
+        </li>
+        <li>
+          <a href="https://pt.wikipedia.org/" target="_blank" rel="noopener noreferrer">Wikipédia — Enciclopédia livre</a>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Caio Sena. Tarefa— Aula 10.</p>
+  </footer>
+</body>
+</html>

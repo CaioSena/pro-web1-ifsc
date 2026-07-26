@@ -1,0 +1,540 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --panel-1: #00305F;
+  --panel-2: #3F4756;
+  --panel-3: #5C1F33;
+  --panel-4: #FFD566;
+  --panel-5: #32936F;
+  --white: #FFFFFF;
+  --orange: #FF8700;
+  --red-bull: #1E41FF;
+  --text-dark: #1a1a2e;
+}
+
+body {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: auto 1fr auto;
+  gap: 0;
+  font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  background: #000;
+  color: var(--white);
+  overflow-x: hidden;
+}
+
+/* ── Grid Panels ── */
+
+header.panel-1 {
+  grid-column: 1 / -1;
+  grid-row: 1;
+  background: linear-gradient(135deg, var(--panel-1) 0%, #001a35 60%, #002850 100%);
+  min-height: 220px;
+  overflow: hidden;
+}
+
+main.main-row {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  gap: 0;
+  min-height: 420px;
+}
+
+aside.panel-2 {
+  background: linear-gradient(180deg, var(--panel-2) 0%, #2a303a 100%);
+}
+
+article.panel-3 {
+  background: linear-gradient(160deg, var(--panel-3) 0%, #3d1525 50%, #4a1a2e 100%);
+}
+
+aside.panel-4 {
+  background: linear-gradient(180deg, var(--panel-4) 0%, #e6bc4d 100%);
+}
+
+footer.panel-5 {
+  grid-column: 1 / -1;
+  grid-row: 3;
+  background: linear-gradient(90deg, var(--panel-5) 0%, #267a5a 50%, var(--panel-5) 100%);
+  min-height: 100px;
+}
+
+header,
+aside,
+article,
+footer {
+  position: relative;
+}
+
+/* ── Panel Labels (top-left) ── */
+
+.panel-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 12px 16px;
+  color: var(--white);
+  z-index: 10;
+  opacity: 0.55;
+}
+
+.panel-number {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.4rem;
+  line-height: 1;
+  letter-spacing: 0.05em;
+}
+
+.panel-label {
+  margin-top: 4px;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  line-height: 1.2;
+}
+
+/* ── Panel 1: Hero / Visor ── */
+
+.visor-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 70% 50%, rgba(255, 135, 0, 0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 80% at 10% 80%, rgba(30, 65, 255, 0.15) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.visor-scanline {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 3px,
+    rgba(255, 255, 255, 0.015) 3px,
+    rgba(255, 255, 255, 0.015) 4px
+  );
+  pointer-events: none;
+}
+
+.helmet-reflection {
+  position: absolute;
+  top: -20%;
+  right: 8%;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 135, 0, 0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2.5rem 3rem 2rem 5rem;
+  height: 100%;
+}
+
+.hero-meta {
+  display: flex;
+  gap: 0.6rem;
+  margin-bottom: 0.75rem;
+}
+
+.badge {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.badge-orange {
+  border-color: var(--orange);
+  color: var(--orange);
+  background: rgba(255, 135, 0, 0.1);
+}
+
+.hero-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  line-height: 0.95;
+  letter-spacing: 0.04em;
+  color: var(--white);
+}
+
+.hero-name span {
+  color: var(--orange);
+}
+
+.hero-tagline {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 300;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.hero-number {
+  position: absolute;
+  right: 6%;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(6rem, 14vw, 11rem);
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.06);
+  letter-spacing: -0.02em;
+  user-select: none;
+}
+
+.hero-number::after {
+  content: '';
+  position: absolute;
+  bottom: 15%;
+  left: 0;
+  width: 60%;
+  height: 4px;
+  background: var(--orange);
+  opacity: 0.7;
+}
+
+/* ── Panel 2: Telemetria ── */
+
+.telemetry {
+  padding: 3rem 1.5rem 1.5rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.section-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.1rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.4);
+  margin-bottom: 1.25rem;
+}
+
+.stat-list {
+  list-style: none;
+  flex: 1;
+}
+
+.stat {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  padding: 0.65rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.stat-value {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.8rem;
+  color: var(--orange);
+  min-width: 3rem;
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.telemetry-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 1rem;
+}
+
+.telemetry-bar span {
+  display: block;
+  height: 3px;
+  width: var(--w);
+  background: linear-gradient(90deg, var(--orange), transparent);
+  border-radius: 2px;
+  animation: pulse-bar 2s ease-in-out infinite alternate;
+}
+
+.telemetry-bar span:nth-child(2) { animation-delay: 0.3s; }
+.telemetry-bar span:nth-child(3) { animation-delay: 0.6s; }
+
+@keyframes pulse-bar {
+  from { opacity: 0.5; }
+  to { opacity: 1; }
+}
+
+/* ── Panel 3: Pista ── */
+
+.track-scene {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+}
+
+.track-lines {
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 49px,
+      rgba(255, 255, 255, 0.04) 49px,
+      rgba(255, 255, 255, 0.04) 50px
+    );
+  mask-image: linear-gradient(180deg, transparent 0%, black 30%, black 70%, transparent 100%);
+}
+
+.track-content {
+  position: relative;
+  z-index: 2;
+  padding: 3rem 2rem 1.5rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.section-title-light {
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.quote {
+  font-size: 1.05rem;
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.85);
+  border-left: 3px solid var(--orange);
+  padding-left: 1rem;
+  margin: 0.5rem 0 1.5rem;
+}
+
+.highlights {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-top: auto;
+}
+
+.highlight-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.6rem 0.85rem;
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.highlight-card strong {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.3rem;
+  color: var(--orange);
+  min-width: 3rem;
+}
+
+.highlight-card span {
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+/* ── Panel 4: Pit Wall ── */
+
+.pit-wall-content {
+  padding: 3rem 1.25rem 1.5rem;
+  height: 100%;
+  color: var(--text-dark);
+}
+
+.section-title-dark {
+  color: rgba(26, 26, 46, 0.45);
+}
+
+.team-data {
+  margin-top: 0.5rem;
+}
+
+.team-data div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.55rem 0;
+  border-bottom: 1px solid rgba(26, 26, 46, 0.12);
+}
+
+.team-data dt {
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(26, 26, 46, 0.5);
+}
+
+.team-data dd {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.team-data .live {
+  color: #c0392b;
+  font-weight: 700;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  animation: blink 1.5s step-end infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0.4; }
+}
+
+.pit-note {
+  margin-top: 1rem;
+  font-size: 0.65rem;
+  font-family: 'Courier New', monospace;
+  letter-spacing: 0.05em;
+  color: rgba(26, 26, 46, 0.55);
+  padding: 0.5rem;
+  background: rgba(26, 26, 46, 0.06);
+  border-radius: 3px;
+}
+
+aside.panel-4 .panel-content {
+  color: rgba(26, 26, 46, 0.4);
+}
+
+/* ── Panel 5: Asa Traseira ── */
+
+.rear-wing {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 3rem;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.wing-graphic {
+  width: 120px;
+  height: 40px;
+  position: relative;
+}
+
+.wing-graphic::before,
+.wing-graphic::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 1px;
+}
+
+.wing-graphic::before {
+  top: 8px;
+  transform: skewY(-3deg);
+}
+
+.wing-graphic::after {
+  bottom: 8px;
+  transform: skewY(3deg);
+}
+
+.footer-text {
+  text-align: center;
+  flex: 1;
+}
+
+.footer-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.4rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.footer-sub {
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+  margin-top: 0.2rem;
+}
+
+.dutch-stripe {
+  width: 60px;
+  height: 36px;
+  border-radius: 3px;
+  overflow: hidden;
+  background: linear-gradient(
+    180deg,
+    #AE1C28 0%,
+    #AE1C28 33.33%,
+    #FFFFFF 33.33%,
+    #FFFFFF 66.66%,
+    #21468B 66.66%,
+    #21468B 100%
+  );
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* ── Responsive ── */
+
+@media (max-width: 768px) {
+  body {
+    grid-template-rows: auto auto auto auto auto;
+    grid-template-columns: 1fr;
+  }
+
+  main.main-row {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+  }
+
+  header.panel-1,
+  footer.panel-5,
+  main.main-row {
+    grid-column: 1;
+  }
+
+  .hero {
+    padding: 2rem 1.5rem;
+  }
+
+  .hero-number {
+    right: 4%;
+    font-size: 5rem;
+    opacity: 0.5;
+  }
+
+  .rear-wing {
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1.5rem;
+  }
+}
